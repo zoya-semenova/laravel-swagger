@@ -1,0 +1,785 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Service Template",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/lang": {
+            "get": {
+                "tags": [
+                    "Lang"
+                ],
+                "summary": "Получение списка языков",
+                "operationId": "getLangResponse",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/limit"
+                    },
+                    {
+                        "$ref": "#/components/parameters/page"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает список языков",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/LangData"
+                                            }
+                                        },
+                                        "pagination": {
+                                            "$ref": "#/components/schemas/PaginationData"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Возвращает ошибку",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Возвращает ошибку при окончании жизненного цикла токена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Отказано в доступе",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Возвращает ошибку сервера",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Lang"
+                ],
+                "summary": "Добавление языка",
+                "operationId": "2df43138b2bd5dcbd779fa6bedc26ec7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LangRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Возвращает конструктор формы",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/LangData"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Возвращает ошибку",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Возвращает ошибку при окончании жизненного цикла токена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Отказано в доступе",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Возвращает ошибку сервера",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/lang/{id}": {
+            "get": {
+                "tags": [
+                    "Lang"
+                ],
+                "summary": "Получение языка",
+                "operationId": "e4577619f4bbcbfde4e8ce7406d79f21",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id языка",
+                        "schema": {
+                            "type": "int",
+                            "nullable": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает конструктор формы",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/LangData"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Возвращает ошибку",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Возвращает ошибку при окончании жизненного цикла токена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Отказано в доступе",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Возвращает ошибку сервера",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Lang"
+                ],
+                "summary": "Редактирование языка",
+                "operationId": "postLangRequest",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id языка",
+                        "schema": {
+                            "type": "int",
+                            "nullable": false
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LangRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Возвращает конструктор формы",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/LangData"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Возвращает ошибку",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Возвращает ошибку при окончании жизненного цикла токена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Отказано в доступе",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Возвращает ошибку сервера",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Lang"
+                ],
+                "summary": "Удаление языка",
+                "operationId": "deleteLangRequest",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id языка",
+                        "schema": {
+                            "type": "int",
+                            "nullable": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает сообщение об успехе",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessData"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Возвращает ошибку",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Возвращает ошибку при окончании жизненного цикла токена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Отказано в доступе",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Возвращает ошибку сервера",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/lang/form/{id}": {
+            "get": {
+                "tags": [
+                    "Lang"
+                ],
+                "summary": "Получение формы для языка",
+                "operationId": "efed315f5a8ecbfd169bed62a7fe2779",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id языка",
+                        "schema": {
+                            "type": "int",
+                            "nullable": false
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Возвращает конструктор формы",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/LangForm"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Возвращает ошибку",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Возвращает ошибку при окончании жизненного цикла токена",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Отказано в доступе",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Возвращает ошибку сервера",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sample": {
+            "get": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Show sample response",
+                "operationId": "getSampleResponse",
+                "responses": {
+                    "200": {
+                        "description": "If found or an empty list if not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SampleData"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Error400Response": {},
+            "Error401Response": {},
+            "Error403Response": {},
+            "Error500Response": {},
+            "ErrorData": {
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "errors": {
+                        "type": "array",
+                        "items": {},
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "FieldData": {
+                "properties": {
+                    "component": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "validator": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "placeholder": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "value": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "ImageData": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "hash": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "ext": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "size": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "file_url": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "ImageRequest": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "hash": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sort_index": {
+                        "type": "integer",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "LangData": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "ministry_id": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "caption": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "locale": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "active": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "files": {
+                        "properties": {
+                            "images": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/ImageData"
+                                }
+                            }
+                        },
+                        "type": "object",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "LangForm": {
+                "properties": {
+                    "caption": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/FieldData"
+                            }
+                        ],
+                        "nullable": true,
+                        "type": "object"
+                    },
+                    "locale": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/FieldData"
+                            }
+                        ],
+                        "nullable": true,
+                        "type": "object"
+                    },
+                    "active": {
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/FieldData"
+                            }
+                        ],
+                        "nullable": true,
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "LangRequest": {
+                "properties": {
+                    "caption": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "locale": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "active": {
+                        "type": "boolean",
+                        "nullable": true
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ImageRequest"
+                        },
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "PaginationData": {
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "SampleData": {
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "parent_id": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "options": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "sort_index": {
+                        "type": "integer",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "SuccessData": {
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "data": {
+                        "properties": {
+                            "messages": {
+                                "type": "array",
+                                "items": {}
+                            }
+                        },
+                        "type": "object",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "SuccessResponse": {}
+        },
+        "parameters": {
+            "limit": {
+                "name": "limit",
+                "in": "query",
+                "schema": {
+                    "type": "integer"
+                }
+            },
+            "page": {
+                "name": "page",
+                "in": "query",
+                "schema": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Lang",
+            "description": "Справочник языков"
+        },
+        {
+            "name": "Sample",
+            "description": "Sample"
+        }
+    ]
+}
